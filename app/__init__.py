@@ -25,5 +25,8 @@ def create_app():
     from app.blueprints.blog import bp as blog_bp
     app.register_blueprint(blog_bp)
 
+    from app.blueprints.api import bp as api_bp
+    app.register_blueprint(api_bp)
+
 
     return app

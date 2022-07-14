@@ -1,9 +1,19 @@
 from flask import render_template
 from . import bp as app
+from app.blueprints.main.models import Car
+
   
 @app.route("/")
 def home():
-    return render_template('index.html')
+    cars = Car.query.all()
+
+
+
+    context = {
+        "cars": cars,
+        "user": "jen" 
+    }
+    return render_template('index.html', **context)
 
 @app.route("/about")
 def about():

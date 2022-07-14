@@ -1,1 +1,52 @@
-<h1>Home</h1>
+{% extends './layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Home</h1>
+    <p>Welcome to Josh's Cars!</p>
+</div>
+
+<form action="http://127.0.0.1:5000/api/new_car" method="POST">
+    <div class="mb-3">
+        <label for="InputMake" class="form-label">Make</label>
+        <input type="text" class="form-control" name="statusInputMake" id="InputMake">
+    </div><br>
+    <div class="mb-3">
+        <label for="InputModel" class="form-label">Model</label>
+        <input type="text" class="form-control" name="statusInputModel" id="InputModel">
+    </div><br>
+    <div class="mb-3">
+        <label for="InputYear" class="form-label">Year</label>
+        <input type="text" class="form-control" name="statusInputYear" id="InputYear">
+    </div><br>
+    <div class="mb-3">
+        <label for="InputColor" class="form-label">Color</label>
+        <input type="text" class="form-control" name="statusInputColor" id="InputColor">
+    </div><br>
+    <div class="mb-3">
+        <label for="InputPrice" class="form-label">Price</label>
+        <input type="text" class="form-control" name="statusInputPrice" id="InputPrice">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+    {% for c in cars %}
+    <div class="card mb-2">
+        <div class="card-body">
+            <p>{{ c.make }}</p>
+            <p>{{ c.model }}</p>
+            <p>{{ c.year }}</p>
+            <p>{{ c.color }}</p>
+            <p>{{ c.price }}</p>
+        </div>
+        <div class="card footer d-flex justify-content-between">
+            <span>{{c.get_user().username}}</span>
+            <span>{{c.date_created}}</span>
+        </div>
+       
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
