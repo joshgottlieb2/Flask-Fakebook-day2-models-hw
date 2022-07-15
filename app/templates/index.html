@@ -3,33 +3,34 @@
 {% block content %}
 <div class="container">
     <h1>Home</h1>
-    <p>Welcome to Josh's Cars!</p>
-</div>
+    {% if current_user.is_authenticated %}
+    <p>Welcome to Josh's Cars, {{ current_user.username }}</p>
+    {% endif %}
 
-<form action="http://127.0.0.1:5000/api/new_car" method="POST">
-    <div class="mb-3">
-        <label for="InputMake" class="form-label">Make</label>
-        <input type="text" class="form-control" name="statusInputMake" id="InputMake">
-    </div><br>
-    <div class="mb-3">
-        <label for="InputModel" class="form-label">Model</label>
-        <input type="text" class="form-control" name="statusInputModel" id="InputModel">
-    </div><br>
-    <div class="mb-3">
-        <label for="InputYear" class="form-label">Year</label>
-        <input type="text" class="form-control" name="statusInputYear" id="InputYear">
-    </div><br>
-    <div class="mb-3">
-        <label for="InputColor" class="form-label">Color</label>
-        <input type="text" class="form-control" name="statusInputColor" id="InputColor">
-    </div><br>
-    <div class="mb-3">
-        <label for="InputPrice" class="form-label">Price</label>
-        <input type="text" class="form-control" name="statusInputPrice" id="InputPrice">
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <form action="http://127.0.0.1:5000/api/new_car" method="POST">
+        <div class="mb-3">
+            <label for="InputMake" class="form-label">Make</label>
+            <input type="text" class="form-control" name="statusInputMake" id="InputMake">
+        </div><br>
+        <div class="mb-3">
+            <label for="InputModel" class="form-label">Model</label>
+            <input type="text" class="form-control" name="statusInputModel" id="InputModel">
+        </div><br>
+        <div class="mb-3">
+            <label for="InputYear" class="form-label">Year</label>
+            <input type="text" class="form-control" name="statusInputYear" id="InputYear">
+        </div><br>
+        <div class="mb-3">
+            <label for="InputColor" class="form-label">Color</label>
+            <input type="text" class="form-control" name="statusInputColor" id="InputColor">
+        </div><br>
+        <div class="mb-3">
+            <label for="InputPrice" class="form-label">Price</label>
+            <input type="text" class="form-control" name="statusInputPrice" id="InputPrice">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 
     {% for c in cars %}
